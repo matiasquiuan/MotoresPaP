@@ -4,8 +4,14 @@ void pasoNormal_init(int IN0, int IN1, int IN2, int IN3){
     int pines[4]={IN0,IN1,IN2,IN3};
     RCC->APB2ENR|=RCC_APB2ENR_IOPAEN;
     for(int i=0; i<4; i++){
-        GPIOA->CRL&=~(0xf<<(pines[i]*4));
-        GPIOA->CRL|=(0X1<<(pines[i]*4));
+        if(pines[i]<8){
+            GPIOA->CRL&=~(0xf<<(pines[i]*4));
+            GPIOA->CRL|=(0X1<<(pines[i]*4));
+        }
+        else{
+            GPIOA->CRH&=~(0xf<<((pines[i]%8)*4));
+            GPIOA->CRH|=(0X1<<((pines[i]%8)*4));
+        }
     }
 }
 
@@ -29,8 +35,14 @@ void pasoCompleto_init(int IN0, int IN1, int IN2, int IN3){
     int pines[4]={IN0,IN1,IN2,IN3};
     RCC->APB2ENR|=RCC_APB2ENR_IOPAEN;
     for(int i=0; i<4; i++){
-        GPIOA->CRL&=~(0xf<<(pines[i]*4));
-        GPIOA->CRL|=(0X1<<(pines[i]*4));
+        if(pines[i]<8){
+            GPIOA->CRL&=~(0xf<<(pines[i]*4));
+            GPIOA->CRL|=(0X1<<(pines[i]*4));
+        }
+        else{
+            GPIOA->CRH&=~(0xf<<((pines[i]%8)*4));
+            GPIOA->CRH|=(0X1<<((pines[i]%8)*4));
+        }
     }
 }
 
@@ -54,8 +66,14 @@ void pasoMedio_init(int IN0, int IN1, int IN2, int IN3){
     int pines[4]={IN0,IN1,IN2,IN3};
     RCC->APB2ENR|=RCC_APB2ENR_IOPAEN;
     for(int i=0; i<4; i++){
-        GPIOA->CRL&=~(0xf<<(pines[i]*4));
-        GPIOA->CRL|=(0X1<<(pines[i]*4));
+        if(pines[i]<8){
+            GPIOA->CRL&=~(0xf<<(pines[i]*4));
+            GPIOA->CRL|=(0X1<<(pines[i]*4));
+        }
+        else{
+            GPIOA->CRH&=~(0xf<<((pines[i]%8)*4));
+            GPIOA->CRH|=(0X1<<((pines[i]%8)*4));
+        }
     }
 }
 
